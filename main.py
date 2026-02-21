@@ -1,9 +1,11 @@
 from fastapi import FastAPI
 from scrapy.crawler import CrawlerRunner
 from scrapy.utils.log import configure_logging
-from crochet import setup
 
-# ESTO DEBE IR ANTES DE CUALQUIER OTRA COSA
+# AQUÍ ESTÁ EL TRUCO: Importa setup Y wait_for
+from crochet import setup, wait_for 
+
+# 1. Inicializa siempre primero
 setup() 
 
 from scraper import MiSpider
