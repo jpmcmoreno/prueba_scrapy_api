@@ -1,12 +1,16 @@
 from fastapi import FastAPI
 from scrapy.crawler import CrawlerRunner
-from crochet import setup, wait_for
-from scraper import MiSpider # Importamos tu spider
+from scrapy.utils.log import configure_logging
+from crochet import setup
 
-# Inicializa crochet para manejar los hilos de Scrapy/Twisted
-setup()
+# ESTO DEBE IR ANTES DE CUALQUIER OTRA COSA
+setup() 
+
+from scraper import MiSpider
+import asyncio
 
 app = FastAPI()
+configure_logging()
 runner = CrawlerRunner()
 
 # Variable global para guardar resultados temporalmente
